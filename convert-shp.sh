@@ -10,14 +10,15 @@ walk_dir () {
         else
             case "$pathname" in
                 *.shp)
+                    #echo $pathname
                     LAYER=$($GDAL_PATH/ogrinfo -json "$pathname" | jq '.layers[0].name')
                     echo "Converting $LAYER to GeoJSON"
                     OUT=$(echo $LAYER | tr -d '"')
                     OUT_L=$(echo "$OUT" | tr '[:upper:]' '[:lower:]')
                     # echo $OUT_L
-                    $GDAL_PATH/ogr2ogr $OUTPUT_DIR/$OUT_L.geojson "$pathname" -f GeoJSON -t_srs EPSG:4326
-                    echo "Converting $LAYER to GeoPackage"
-                    $GDAL_PATH/ogr2ogr $OUTPUT_DIR/$OUT_L.gpkg "$pathname" -f GPKG -t_srs EPSG:4326
+                    $GDAL_PATH/ogr2ogr $OUTPUT_DIR/$OUT_L.geojson "$pathname" -f GeoJSON -explodecollections -t_srs EPSG:4326
+                    #echo "Converting $LAYER to GeoPackage"
+                    $GDAL_PATH/ogr2ogr $OUTPUT_DIR/$OUT_L.gpkg "$pathname" -f GPKG -explodecollections -t_srs EPSG:4326
             esac
         fi
     done
