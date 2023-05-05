@@ -20,7 +20,6 @@ walk_dir () {
                     $GDAL_PATH/ogr2ogr $OUTPUT_DIR/$OUT.geojson "$pathname" -f GeoJSON -t_srs EPSG:4326
                     echo "Converting $LAYER to GeoPackage"
                     $GDAL_PATH/ogr2ogr $OUTPUT_DIR/$OUT.gpkg "$pathname" -f GPKG -t_srs EPSG:4326
-                    exit
             esac
         fi
     done
