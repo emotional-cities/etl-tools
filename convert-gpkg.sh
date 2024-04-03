@@ -18,7 +18,7 @@ walk_dir () {
                     #echo "Converting $LAYER to GeoPackage"
                     OUT=$(echo $LAYER | tr -d '"')
                     OUT_L=$(echo "$OUT" | tr '[:upper:]' '[:lower:]')
-                    export LD_LIBRARY_PATH=$LD_PATH && $GDAL_PATH/ogr2ogr $OUTPUT_DIR/$OUT_L.gpkg "$pathname" -f GPKG -oo X_POSSIBLE_NAMES="GPS (Long.) [deg]" -oo Y_POSSIBLE_NAMES="GPS (Lat.) [deg]" -oo Y_POSSIBLE_NAMES="GPS (Alt.) [m]" -a_srs 'EPSG:4326'
+                    export LD_LIBRARY_PATH=$LD_PATH && $GDAL_PATH/ogr2ogr $OUTPUT_DIR/$OUT_L.gpkg "$pathname" -nln "$OUT" -f GPKG -oo X_POSSIBLE_NAMES="GPS (Long.) [deg]" -oo Y_POSSIBLE_NAMES="GPS (Lat.) [deg]" -oo Y_POSSIBLE_NAMES="GPS (Alt.) [m]" -a_srs 'EPSG:4326'
              esac
         fi
     done

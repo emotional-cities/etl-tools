@@ -15,12 +15,11 @@ do
     echo "converting ${element}..."
     filename=$(basename -- ${element} .geojson)
     #echo ${filename}
-    docker run -v "${PWD}/data:/mnt" ghcr.io/osgeo/gdal:ubuntu-full-3.8.4  \
+    docker run ghcr.io/osgeo/gdal:ubuntu-full-3.8.4  \
         ogr2ogr --config AWS_REGION "eu-central-1" --config AWS_ACCESS_KEY_ID $AWSAccessKeyId \
         --config AWS_SECRET_ACCESS_KEY $AWSSecretKey -f parquet /vsis3/emotional-cities/geoparquet/${filename}.parquet \
         /vsis3/emotional-cities/geojson/${element}
 done
-
 echo "done!"
 
 #docker run -v "${PWD}/data:/mnt" ghcr.io/osgeo/gdal:ubuntu-full-3.8.4 ogrinfo --version
