@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/doublebyte1/yellow-bricks/master/dist/assets/img/portfolio/ecities.svg" width="200">
 
-Helper tools to insert data into the sdi
+Helper tools to insert data into the sdi. _You will need the [bash](https://www.gnu.org/software/bash/) shell to run these scripts!_
 
 ## Quick Setup
 
@@ -20,13 +20,13 @@ chmod +x convert-shp.sh
 
 ## Script List
 
-* convert-csv.sh: bulk conversion of csv files on a local folder, to geojson, using `template.vrt` (check this file for custom options)
-* convert-geojson.sh: bulk conversion of geojson files on a local folder to geopackage
-* convert-geoparquet.sh: bulk conversion of geojson files on a S3 bucket to geoparquet, placing them on another s3 bucket
-* convert-gpkg.sh: bulk conversion of csv files on a local folder to geopackage
-* convert-shp.sh: bulk conversion of shapefiles files on a local folder to geopackage
-* geojson2gpkg.sh: variation of `convert.geojson`
-* 
+* [convert-csv.sh](./convert-csv.sh): bulk conversion of csv files on a local folder, to geojson, using `template.vrt` (check this file for custom options)
+* [convert-geojson.sh](./convert-geojson.sh): bulk conversion of geojson files on a local folder to geopackage
+* [convert-geoparquet.sh](./convert-geoparquet.sh): bulk conversion of geojson files on a S3 bucket to geoparquet, placing them on another s3 bucket
+* [convert-gpkg.sh](./convert-gpkg.sh): bulk conversion of csv files on a local folder to geopackage
+* [convert-shp.sh](./convert-shp.sh): bulk conversion of shapefiles files on a local folder to geopackage
+* [geojson2gpkg.sh](./geojson2gpkg.sh): variation of `convert-geojson.sh`
+  
 ## Requirements
 
 * [GDAL](https://gdal.org/) >= 3.7
