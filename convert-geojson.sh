@@ -16,7 +16,7 @@ walk_dir () {
                     OUT=$(echo $LAYER | tr -d '"')
                     OUT_L=$(echo "$OUT" | tr '[:upper:]' '[:lower:]')
                     # echo $OUT_L
-                    #$GDAL_PATH/ogr2ogr $OUTPUT_DIR/$OUT_L.geojson "$pathname" -f GeoJSON -explodecollections -t_srs EPSG:4326
+                    $GDAL_PATH/ogr2ogr $OUTPUT_DIR/$OUT_L.geojson "$pathname" -f GeoJSON -explodecollections -t_srs EPSG:4326
                     #echo "Converting $LAYER to GeoPackage"
                     $GDAL_PATH/ogr2ogr $OUTPUT_DIR/$OUT_L.gpkg "$pathname" -f GPKG -a_srs EPSG:4326
             esac

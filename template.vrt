@@ -1,0 +1,8 @@
+<OGRVRTDataSource>
+  <OGRVRTLayer name="DATASET">
+    <SrcDataSource>data/csv/FILENAME</SrcDataSource>
+    <GeometryType>wkbPolygon</GeometryType>
+    <LayerSRS>EPSG:4326</LayerSRS>
+    <GeometryField encoding="WKT" field="geometry"/>
+  </OGRVRTLayer>
+</OGRVRTDataSource>

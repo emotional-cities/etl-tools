@@ -5,7 +5,7 @@
 my_array=()
 while IFS= read -r line; do
     my_array+=( "$line" )
-done < <( /bin/aws s3 ls emotional-cities/geojson/ | sed -nr 's/.* ([^ ]*.)/\1/p' )
+done < <( /bin/aws s3 ls emotional-cities/geojson/dtu/ | sed -nr 's/.* ([^ ]*.)/\1/p' )
 
 # my_array_length=${#my_array[@]}
 # echo ${my_array_length}
@@ -18,7 +18,7 @@ do
     docker run ghcr.io/osgeo/gdal:ubuntu-full-3.8.4  \
         ogr2ogr --config AWS_REGION "eu-central-1" --config AWS_ACCESS_KEY_ID $AWSAccessKeyId \
         --config AWS_SECRET_ACCESS_KEY $AWSSecretKey -f parquet /vsis3/emotional-cities/geoparquet/${filename}.parquet \
-        /vsis3/emotional-cities/geojson/${element}
+        /vsis3/emotional-cities/geojson/dtu/${element}
 done
 echo "done!"
 
