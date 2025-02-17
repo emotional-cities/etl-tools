@@ -24,8 +24,8 @@ walk_dir () {
     done
 }
 
-GDAL_PATH=/home/joana/apps/bin/
-DOWNLOADING_DIR=/home/joana/projects/EC/msu
+GDAL_PATH=/bin/
+DOWNLOADING_DIR=/home/joana/projects/EC/msu/update
 OUTPUT_DIR=/home/joana/projects/EC/msu/output
 
 walk_dir "$DOWNLOADING_DIR"
