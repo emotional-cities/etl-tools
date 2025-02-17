@@ -26,6 +26,7 @@ chmod +x convert-shp.sh
 * [convert-gpkg.sh](./convert-gpkg.sh): bulk conversion of csv files on a local folder to geopackage
 * [convert-shp.sh](./convert-shp.sh): bulk conversion of shapefiles files on a local folder to geopackage
 * [geojson2gpkg.sh](./geojson2gpkg.sh): variation of `convert-geojson.sh`
+* [convert-pgdump.sh](./convert-geojson.sh): bulk conversion of geojson files in a single postgis sql create/insert script
   
 ## Requirements
 
