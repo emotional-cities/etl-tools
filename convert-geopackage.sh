@@ -5,7 +5,9 @@
 my_array=()
 while IFS= read -r line; do
     my_array+=( "$line" )
+# done < <( aws s3 ls emotional-cities/geojson/ | sed -nr 's/.* ([^ ]*.)/\1/p' )
 done < <(aws s3 ls emotional-cities/geojson/ | grep '.geojson' | sed -nr 's/.* ([^ ]*.)/\1/p')
+
 
 # my_array_length=${#my_array[@]}
 # echo ${my_array_length}
@@ -15,10 +17,14 @@ do
     echo "converting ${element}..."
     filename=$(basename -- ${element} .geojson)
     #echo ${filename}
-    docker run ghcr.io/osgeo/gdal:ubuntu-full-3.8.4  \
+    docker run \
+        -e CPL_VSIL_USE_TEMP_FILE_FOR_RANDOM_WRITE=YES \
+        ghcr.io/osgeo/gdal:ubuntu-full-3.8.4  \
         ogr2ogr --config AWS_REGION "eu-central-1" --config AWS_ACCESS_KEY_ID $AWSAccessKeyId \
-        --config AWS_SECRET_ACCESS_KEY $AWSSecretKey -f parquet /vsis3/emotional-cities/geoparquet/${filename}.parquet \
+        --config AWS_SECRET_ACCESS_KEY $AWSSecretKey -f GPKG -a_srs EPSG:4326 \
+        /vsis3/emotional-cities/geopackage/${filename}.gpkg \
         /vsis3/emotional-cities/geojson/${element}
+
 done
 echo "done!"
 
